@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Jobs from './components/Jobs';
+import Bookmarks from './components/Bookmarks';
 
-function App() {
+const App = () => {
+  const [activeTab, setActiveTab] = useState('jobs');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {activeTab === 'jobs' && <Jobs />}
+      {activeTab === 'bookmarks' && <Bookmarks />}
+      
+      {/* Bottom Navigation */}
+      <div className="bottom-nav">
+        <button onClick={() => setActiveTab('jobs')}>Jobs</button>
+        <button onClick={() => setActiveTab('bookmarks')}>Bookmarks</button>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
